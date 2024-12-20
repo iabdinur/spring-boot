@@ -18,19 +18,22 @@ public class PersonRepository {
                 idCounter.incrementAndGet(),
                 "John",
                 20,
-                Gender.MALE));
+                Gender.MALE,
+                "John@gmail.com"));
 
         people.add(new Person(
                 idCounter.incrementAndGet(),
                 "Mariam",
                 18,
-                Gender.FEMALE));
+                Gender.FEMALE,
+                "Mariam@gmail.com"));
 
         people.add(new Person(
                 idCounter.incrementAndGet(),
                 "Ibrahim",
                 30,
-                Gender.MALE));
+                Gender.MALE,
+                "Ibrahim@gmail.com"));
     }
 
     public AtomicInteger getIdCounter() {

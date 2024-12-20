@@ -30,8 +30,8 @@ public class PersonController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Optional<Person>> getPersonById(@PathVariable Integer id) {
-        Optional<Person> person = personService.getPersonById(id);
+    public ResponseEntity<Person> getPersonById(@PathVariable Integer id) {
+        Person person = personService.getPersonById(id);
         return ResponseEntity.ok().body(person);
     }
 

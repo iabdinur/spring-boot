@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-and-spring-boot
+
+
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
