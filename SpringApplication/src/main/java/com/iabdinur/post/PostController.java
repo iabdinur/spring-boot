@@ -1,8 +1,8 @@
 package com.iabdinur.post;
 
-import com.iabdinur.post.jsonplaceholder.JSONPlaceholderService;
+import com.iabdinur.post.jsonplaceholder.JSONPlaceHolderService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
-    private final JSONPlaceholderService jsonPlaceholderService;
+    private final JSONPlaceHolderService jsonPlaceholderService;
 
-    public PostController(PostService postService, JSONPlaceholderService jsonPlaceholderService) {
+    public PostController(PostService postService, JSONPlaceHolderService jsonPlaceholderService) {
         this.postService = postService;
         this.jsonPlaceholderService = jsonPlaceholderService;
     }
