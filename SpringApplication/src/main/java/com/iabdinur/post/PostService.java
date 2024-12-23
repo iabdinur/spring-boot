@@ -36,17 +36,19 @@ public class PostService {
                 .toBodilessEntity();
     }
 
-    public void updatePost(Post post) {
-        restClient.put().uri("/posts")
+    public void deletePostById(Integer id) {
+        restClient.delete().uri("/posts/{id}")
+                .retrieve()
+                .toBodilessEntity();
+    }
+
+    public void updatePost(Integer id, Post post) {
+        restClient.put().uri("/posts/{id}")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(post)
                 .retrieve()
                 .toBodilessEntity();
     }
 
-    public void deletePost(Integer id) {
-        restClient.delete().uri("/posts/{id}")
-                .retrieve()
-                .toBodilessEntity();
-    }
+
 }
