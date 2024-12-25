@@ -10,7 +10,7 @@ import org.springframework.web.service.annotation.PutExchange;
 
 import java.util.List;
 
-public interface JSONPlaceHolderService {
+public interface JsonPlaceHolderService {
     @GetExchange("/posts")
     List<Post> getAllPosts();
 

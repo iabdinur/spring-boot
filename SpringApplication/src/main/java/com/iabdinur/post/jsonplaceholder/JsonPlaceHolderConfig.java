@@ -12,22 +12,22 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
-public class JSONPlaceHolderConfig {
+public class JsonPlaceHolderConfig {
 
     @Bean("rest-client")
-    JSONPlaceHolderService jsonPlaceHolderRestClientService() {
+    JsonPlaceHolderService jsonPlaceHolderRestClientService() {
         RestClient restClient = RestClient.create(
                 "https://jsonplaceholder.typicode.com"
         );
         return HttpServiceProxyFactory
                 .builderFor(RestClientAdapter.create(restClient))
                 .build()
-                .createClient(JSONPlaceHolderService.class);
+                .createClient(JsonPlaceHolderService.class);
     }
 
     @Primary
     @Bean("web-client")
-    JSONPlaceHolderService jsonPlaceHolderWebClientService() {
+    JsonPlaceHolderService jsonPlaceHolderWebClientService() {
         WebClient restClient = WebClient.builder()
                 .baseUrl("https://jsonplaceholder.typicode.com")
                 .defaultStatusHandler(HttpStatusCode::isError, clientResponse -> {
@@ -37,6 +37,6 @@ public class JSONPlaceHolderConfig {
         return HttpServiceProxyFactory
                 .builderFor(WebClientAdapter.create(restClient))
                 .build()
-                .createClient(JSONPlaceHolderService.class);
+                .createClient(JsonPlaceHolderService.class);
     }
 }

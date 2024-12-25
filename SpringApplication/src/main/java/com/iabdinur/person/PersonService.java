@@ -6,7 +6,9 @@ import com.iabdinur.exception.ResourceNotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
@@ -14,15 +16,21 @@ public class PersonService {
     private final FakePersonRepository fakePersonRepository;
     private final PersonRepository personRepository;
 
-
-
-    public PersonService(FakePersonRepository fakePersonRepository, PersonRepository personRepository) {
+    public PersonService(FakePersonRepository fakePersonRepository,
+                         PersonRepository personRepository) {
         this.fakePersonRepository = fakePersonRepository;
         this.personRepository = personRepository;
     }
 
-    public List<Person> getPeople(SortingOrder sort) {
-        return personRepository.findAll(Sort.by(Sort.Direction.valueOf(sort.name()), "id"));
+    public List<Person> getPeople(
+            SortingOrder sort
+    ) {
+        return personRepository.findAll(
+                Sort.by(
+                        Sort.Direction.valueOf(sort.name()),
+                        "id"
+                )
+        );
     }
 
     public Person getPersonById(Integer id) {
