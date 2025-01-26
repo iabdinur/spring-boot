@@ -1,18 +1,25 @@
 package com.iabdinur.ai.deepseek;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.iabdinur.ai.openai.JavaFrameworkRank;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/deepseek")
+@RequestMapping("api/v1/deepseek")
 public class DeepseekAiController {
 
-    private DeepseekAiService deepSeekAiService;
+    private final DeepseekAiService deepseekAiService;
 
-    @PostMapping("/call")
-    public String callDeepSeekR1Api(@RequestBody String requestPayload) {
-        return deepSeekAiService.callDeepSeekR1Api(requestPayload);
+    public DeepseekAiController(DeepseekAiService deepseekAiService) {
+        this.deepseekAiService = deepseekAiService;
+    }
+
+    @GetMapping("chat")
+    public String chat(@RequestParam String message) {
+        return deepseekAiService.getChatResponse(message);
     }
 }
